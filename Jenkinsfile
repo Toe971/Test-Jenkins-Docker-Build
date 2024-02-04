@@ -9,7 +9,7 @@ pipeline {
         stage('Setup') {
             agent {
                 docker {
-                    image 'node:latest'
+                    image 'node:lts'
                     reuseNode true
                 }
             }

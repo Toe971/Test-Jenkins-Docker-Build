@@ -22,7 +22,7 @@ pipeline {
         stage('Mock BACKUP DEFAULT ENV TEMPLATE') {
             agent {
                 docker {
-                    image 'alpine:latest'
+                    image 'node:lts'
                     reuseNode true
                 }
             }

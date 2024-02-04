@@ -15,7 +15,7 @@ pipeline {
             }
             steps {
                 sh 'printenv'
-                sh '/usr/local/bin/node --version'
+                sh 'node --version'
             }
         }
 

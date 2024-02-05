@@ -10,6 +10,7 @@ pipeline {
             agent {
                 docker {
                     image 'node:lts'
+                    reuseNode false
                 }
             }
             steps {

@@ -22,11 +22,23 @@ pipeline {
         stage('Build for SGD, MYR, IDR') {
             parallel {
                 stage('SGD') {
+                    agent {
+                        docker {
+                            image 'node:20'
+                            reuseNode false
+                        }
+                    }
                     steps {
                         sh 'echo "Building for SGD"'
                     }
                 }
                 stage('MYR') {
+                    agent {
+                        docker {
+                            image 'node:20'
+                            reuseNode false
+                        }
+                    }
                     steps {
                         sh 'echo "Building for MYR"'
                     }

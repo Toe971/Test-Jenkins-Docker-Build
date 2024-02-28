@@ -9,7 +9,7 @@ pipeline {
         stage('Setup') {
             agent {
                 docker {
-                    image 'node:lts'
+                    image 'node:20'
                     reuseNode false
                 }
             }
@@ -19,16 +19,18 @@ pipeline {
             }
         }
 
-        stage('Mock BACKUP DEFAULT ENV TEMPLATE') {
-            agent {
-                docker {
-                    image 'node:lts'
-                    reuseNode true
+        stage('Build for SGD, MYR, IDR') {
+            parallel {
+                stage('SGD') {
+                    steps {
+                        sh 'echo "Building for SGD"'
+                    }
                 }
-            }
-            steps {
-                sh 'printenv'
-                sh 'node --version'
+                stage('MYR') {
+                    steps {
+                        sh 'echo "Building for MYR"'
+                    }
+                }
             }
         }
     }

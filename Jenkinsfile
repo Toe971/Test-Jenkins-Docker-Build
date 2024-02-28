@@ -31,6 +31,7 @@ pipeline {
                     steps {
                         sh 'echo "Building for SGD"'
                         sh 'sleep 20s'
+                        sh 'echo date'
                     }
                 }
                 stage('MYR') {
@@ -42,6 +43,8 @@ pipeline {
                     }
                     steps {
                         sh 'echo "Building for MYR"'
+                        sh 'echo date'
+
                     }
                 }
             }

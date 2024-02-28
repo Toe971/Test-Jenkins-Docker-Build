@@ -30,6 +30,7 @@ pipeline {
                     }
                     steps {
                         sh 'echo "Building for SGD"'
+                        sh 'sleep 20s'
                     }
                 }
                 stage('MYR') {

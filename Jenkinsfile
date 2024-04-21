@@ -33,8 +33,8 @@ pipeline {
                             sh 'echo "Building for SGD"'
                             sh 'sleep 20s'
                             sh 'echo `date`'
+                            sh 'echo "Test PARALLEL STAGES SGD SLEEP"'
                         }
-                        sh 'echo "Test PARALLEL STAGES SGD SLEEP"'
                 }
                 stage('MYR') {
                     agent {

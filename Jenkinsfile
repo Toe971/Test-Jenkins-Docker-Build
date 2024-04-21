@@ -23,17 +23,7 @@ pipeline {
             failFast true
             parallel {
                 stage("SGD") {
-                    stage('PRE SGD') {
                         agent {
-                            docker {
-                                image 'node:20'
-                                reuseNode false
-                            }
-                        }
-                        sh 'echo "Test PARALLEL STAGES"'
-                    }
-                    stage('POST SGD') {
-                                                agent {
                             docker {
                                 image 'node:20'
                                 reuseNode false
@@ -44,7 +34,7 @@ pipeline {
                             sh 'sleep 20s'
                             sh 'echo `date`'
                         }
-                    }
+                        sh 'echo "Test PARALLEL STAGES SGD SLEEP"'
                 }
                 stage('MYR') {
                     agent {

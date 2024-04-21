@@ -19,19 +19,31 @@ pipeline {
             }
         }
 
-        stage('Build for SGD, MYR, IDR') {
+        stage('Parallel Build for SGD, MYR, IDR') {
+            failFast true
             parallel {
-                stage('SGD') {
-                    agent {
-                        docker {
-                            image 'node:20'
-                            reuseNode false
+                stages("SGD") {
+                    stage('PRE SGD') {
+                        agent {
+                            docker {
+                                image 'node:20'
+                                reuseNode false
+                            }
                         }
+                        sh 'echo "Test PARALLEL STAGES"'
                     }
-                    steps {
-                        sh 'echo "Building for SGD"'
-                        sh 'sleep 20s'
-                        sh 'echo `date`'
+                    stage('POST SGD') {
+                                                agent {
+                            docker {
+                                image 'node:20'
+                                reuseNode false
+                            }
+                        }
+                        steps {
+                            sh 'echo "Building for SGD"'
+                            sh 'sleep 20s'
+                            sh 'echo `date`'
+                        }
                     }
                 }
                 stage('MYR') {

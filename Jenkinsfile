@@ -22,7 +22,7 @@ pipeline {
         stage('Parallel Build for SGD, MYR, IDR') {
             failFast true
             parallel {
-                stages("SGD") {
+                stage("SGD") {
                     stage('PRE SGD') {
                         agent {
                             docker {
